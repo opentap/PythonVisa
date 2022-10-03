@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Package Name="PythonVisa" OS="Windows,Linux,MacOS" Date="10/03/2022 21:50:17" Version="0.1.0" Architecture="AnyCPU" xmlns="http://opentap.io/schemas/package">
-  <Hash>JmDyyyCzFLVS5B5LKu-SZrrgD64</Hash>
   <Dependencies>
     <PackageDependency Package="OpenTAP" Version="^9.19.1-alpha.3.1+1eb256ba.feature-make-visa-pluggable" />
     <PackageDependency Package="Python" Version="^3.0.0-rc+b49e92cd" />
@@ -9,20 +8,15 @@
   <SourceUrl>https://github.com/alan-copeland-keysight/PythonVisa</SourceUrl>
   <Files>
     <File Path="Packages/PythonVisa/PyVisa.py">
-      <Hash>787BDCDEB7BE13B2E5047C659B7BE6138ABE3036</Hash>
     </File>
     <File Path="Packages/PythonVisa/__init__.py">
-      <Hash>C316F6A6ECF4C6BC323FB7B22E598B2B71B79C26</Hash>
     </File>
     <File Path="Packages/PythonVisa/LICENSE.txt">
-      <Hash>90DE7D43D7D1534DB5141037CE939E6328E5C318</Hash>
     </File>
     <File Path="Packages/PythonVisa/requirements.txt">
       <PythonRequirements></PythonRequirements>
-      <Hash>A8B9232F8D3D681630351D8FA8C36FD606A6A68E</Hash>
     </File>
     <File Path="Settings/Bench/Default/VISA.xml">
-      <Hash>CFF67210E9C6038542EB58E75112FDF18CD18F30</Hash>
     </File>
   </Files>
   <License>Apache-2.0</License>
