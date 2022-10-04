@@ -1,0 +1,29 @@
+variables:
+  TARGET_VERSION: '9.19.0'
+  REPO_URL: 'http://packages.opentap.keysight.com'
+
+stages:
+  - build
+
+Build:
+  stage: build
+  tags:
+     - windows
+  script: |
+          Keysight.Tap.Install.exe --uninstall --clean --product ks8000 --install --version %TARGET_VERSION%
+          "%TAP_PATH%\tap.exe" package install -f -v -r %REPO_URL% Python --version -rc
+          copy .\VISA.xml "%TAP_PATH%\Settings\Bench\Default\"
+          DEL "%TAP_PATH%\*.TapPackage"
+
+          SET projDir=%CD%
+          pushd %TAP_PATH%
+          
+          "%TAP_PATH%\tap.exe" package create --verbose "%projDir%\package.xml" --project-directory %projDir%
+          
+          popd        
+          move "%TAP_PATH%\*.TapPackage" .
+  artifacts:
+    expire_in: 1 week
+    paths:
+       - "*.TapPackage"
+
