@@ -16,8 +16,6 @@
     <File Path="Packages/PythonVisa/requirements.txt">
       <PythonRequirements></PythonRequirements>
     </File>
-    <File Path="Settings/Bench/Default/VISA.xml">
-    </File>
   </Files>
   <License>Apache-2.0</License>
   <Description>This package enables a VISA connection using the pyvisa/pyvisa-py library as its underlying I/O mechanism.</Description>
