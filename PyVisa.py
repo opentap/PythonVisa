@@ -1,7 +1,7 @@
 """
  Passthrough I/O to pyvisa
 """
-from System import String, Int32, Int16, Byte, UInt32, ArraySegment
+from System import String, Int32, Int16, Byte, UInt32, ArraySegment, Double
 from System.Text import StringBuilder
 import System.Threading
 import OpenTap
@@ -11,12 +11,12 @@ from opentap import *
 import random
 
 import pyvisa
-
+    
 class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
     _foundLists = {}
     _rm = None
     _connections = {}
-
+    
     @method(Int32,[Int32]) 
     @staticmethod
     def viOpenDefaultRM(sesn):  
@@ -93,7 +93,7 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
         
     @method(Int32,[Int32, UInt32, Byte])
     @staticmethod
-    def viGetAttributeDelegate1(vi, attrName, attrValue):
+    def viGetAttribute1(vi, attrName, attrValue):
         try:
             attrValue, StatusCode = PyVisa._rm.visalib.get_attribute(vi, attrName)
         except pyvisa.errors.VisaIOError as err:
@@ -101,12 +101,12 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
                 print("pyvisa warning: ignoring error_non_supported_attribute on get_attribute1. name: {0}, value: {1}".format(attrName, attrValue))
                 StatusCode = pyvisa.constants.StatusCode.success
             else:
-                print("viGetAttributeDelegate1: {0}, {1}".format(err.error_code, err.description))
+                print("viGetAttribute1: {0}, {1}".format(err.error_code, err.description))
         return StatusCode.value, attrValue
 
     @method(Int32,[Int32, Int32, StringBuilder])
     @staticmethod
-    def viGetAttributeDelegate2(vi, attrName, attrValue):
+    def viGetAttribute2(vi, attrName, attrValue):
         try:
             if (attrName == -1073807359 and str(vi) in PyVisa._connections):#VI_ATTR_RSRC_CLASS
                 resourceInfo, statusCode = PyVisa._rm.visalib.parse_resource_extended(PyVisa._connections[str(vi)]['rm'], PyVisa._connections[str(vi)]['address'])
@@ -119,12 +119,12 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
                 print("pyvisa warning: ignoring error_non_supported_attribute on get_attribute2. name: {0}, value: {1}".format(attrName, attrValue))
                 StatusCode = pyvisa.constants.StatusCode.success.value
             else:
-                print("viGetAttributeDelegate2: {0}, {1}".format(err.error_code, err.description))
+                print("viGetAttribute2: {0}, {1}".format(err.error_code, err.description))
         return StatusCode.value, attrValue
 
     @method(Int32,[Int32, UInt32, Int32])
     @staticmethod
-    def viGetAttributeDelegate3(vi, attrName, attrValue):
+    def viGetAttribute3(vi, attrName, attrValue):
         try:
             attrValue, StatusCode = PyVisa._rm.visalib.get_attribute(vi, attrName)
         except pyvisa.errors.VisaIOError as err:
@@ -132,12 +132,12 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
                 print("pyvisa warning: ignoring error_non_supported_attribute on get_attribute3. name: {0}, value: {1}".format(attrName, attrValue))
                 StatusCode = pyvisa.constants.StatusCode.success
             else:
-                print("viGetAttributeDelegate3: {0}, {1}".format(err.error_code, err.description))
+                print("viGetAttribute3: {0}, {1}".format(err.error_code, err.description))
         return StatusCode.value, attrValue
     
     @method(Int32,[Int32, UInt32, Byte])
     @staticmethod
-    def viSetAttributeDelegate1(vi, attrName, attrValue):
+    def viSetAttribute1(vi, attrName, attrValue):
         try:
             StatusCode = PyVisa._rm.visalib.set_attribute(vi, attrName, attrValue)
         except pyvisa.errors.VisaIOError as err:
@@ -145,12 +145,12 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
                 print("pyvisa warning: ignoring error_non_supported_attribute on set_attribute1. name: {0}, value: {1}".format(attrName, attrValue))
                 StatusCode = pyvisa.constants.StatusCode.success
             else:
-                print("viSetAttributeDelegate1: {0}, {1}".format(err.error_code, err.description))
+                print("viSetAttribute1: {0}, {1}".format(err.error_code, err.description))
         return StatusCode
 
     @method(Int32,[Int32, UInt32, Int32])
     @staticmethod
-    def viSetAttributeDelegate2(vi, attrName, attrValue):
+    def viSetAttribute2(vi, attrName, attrValue):
         try:
             StatusCode = PyVisa._rm.visalib.set_attribute(vi, attrName, attrValue)
         except pyvisa.errors.VisaIOError as err:
@@ -158,7 +158,7 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
                 print("pyvisa warning: ignoring error_non_supported_attribute on set_attribute2. name: {0}, value: {1}".format(attrName, attrValue))
                 StatusCode = pyvisa.constants.StatusCode.success
             else:
-                print("viSetAttributeDelegate2: {0}, {1}".format(err.error_code, err.description))
+                print("viSetAttribute2: {0}, {1}".format(err.error_code, err.description))
         return StatusCode
             
     @method(Int32,[Int32, Int32, StringBuilder])
@@ -239,3 +239,10 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
     def viUnlock(vi):
         StatusCode = PyVisa._rm.visalib.unlock(vi)
         return StatusCode
+
+class PyVisaProvider(OpenTap.IVisaProvider, OpenTap.ITapPlugin):
+    def __init__(self):
+        _self = self
+    _visa = OpenTap.IVisa(PyVisa())
+    Order = property(Double, 20000)
+    Visa = property(OpenTap.IVisa, _visa)
