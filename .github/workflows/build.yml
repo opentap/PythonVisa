@@ -40,7 +40,7 @@ jobs:
       - name: Package plugin
         run: |
              pushd tap/bin/Debug
-             tap package create --project-directory Packages/PythonVisa Packages/PythonVisa/package.xml
+             ./tap package create --project-directory Packages/PythonVisa Packages/PythonVisa/package.xml
              popd   
              ls -la 
       - name: Upload binaries
