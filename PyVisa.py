@@ -1,7 +1,8 @@
 """
  Passthrough I/O to pyvisa
 """
-from System import String, Int32, Int16, Byte, UInt32, ArraySegment, Double
+from System import String, Int32, Int16, Byte, UInt32, ArraySegment, Double, Boolean
+from System.ComponentModel import BrowsableAttribute
 from System.Text import StringBuilder
 import System.Threading
 import OpenTap
@@ -20,7 +21,8 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
     @method(Int32,[Int32]) 
     @staticmethod
     def viOpenDefaultRM(sesn):  
-        PyVisa._rm = pyvisa.ResourceManager('@py')
+        PyVisa._rm = pyvisa.ResourceManager(OpenTap.ComponentSettings.GetCurrent(PyVisaSettings).Backend)
+        print(PyVisa._rm)
         PyVisa._rm.visalib.issue_warning_on = {}
         return 0, PyVisa._rm.session  
         
@@ -240,9 +242,20 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
         StatusCode = PyVisa._rm.visalib.unlock(vi)
         return StatusCode
 
+@attribute(OpenTap.Display("PythonVisa Settings", "Customize the behavior of PythonVisa"))
+@attribute(BrowsableAttribute, False)
+class PyVisaSettings(OpenTap.ComponentSettings):
+    def __init__(self):
+        super().__init__()
+    LoadFirst = property(Boolean, False)\
+        .add_attribute(OpenTap.Display("Load PythonVisa before the standard VISA libraries on the system"))
+    Backend = property(String, '@py')\
+        .add_attribute(OpenTap.Display("pyvisa backend to use"))
+
 class PyVisaProvider(OpenTap.IVisaProvider, OpenTap.ITapPlugin):
     def __init__(self):
         _self = self
+
     _visa = OpenTap.IVisa(PyVisa())
-    Order = property(Double, 20000)
+    Order = property(Double, 9999 if OpenTap.ComponentSettings.GetCurrent(PyVisaSettings).LoadFirst == True else 10001)
     Visa = property(OpenTap.IVisa, _visa)
