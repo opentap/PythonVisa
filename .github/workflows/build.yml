@@ -39,8 +39,8 @@ jobs:
           path: tap/bin/Debug/Packages/PythonVisa
       - name: Package plugin
         run: |
-             pushd tap/bin/Debug
-             ./tap package create Packages/PythonVisa/package.xml
+             pushd tap/bin/Debug/Packages/PythonVisa/
+             ../../tap package create package.xml
              popd   
              ls -la 
       - name: Upload binaries
