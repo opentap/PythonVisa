@@ -243,7 +243,6 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
         return StatusCode
 
 @attribute(OpenTap.Display("PythonVisa Settings", "Customize the behavior of PythonVisa"))
-@attribute(BrowsableAttribute, False)
 class PyVisaSettings(OpenTap.ComponentSettings):
     def __init__(self):
         super().__init__()
