@@ -29,9 +29,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: 'alan-copeland-keysight/opentap'
-          ref: '1f6bc14'
+          ref: 'feature/make-visa-pluggable'
           path: 'tap'
-
+          fetch-depth: 0
       - name: Build OpenTAP branch
         run: |
              pushd tap
