@@ -47,3 +47,10 @@ jobs:
              ./tap package create Packages/PythonVisa/package.xml
              popd   
              ls -la 
+      - name: Upload binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: TapPackage
+          retention-days: 14
+          path: |
+            bin/Debug/PythonVisa*.TapPackage
