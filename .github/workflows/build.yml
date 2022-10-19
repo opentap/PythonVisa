@@ -24,7 +24,7 @@ jobs:
       - name: Get custom OpenTAP branch
         uses: actions/checkout@v3
         with:
-          repository: 'https://github.com/alan-copeland-keysight/opentap.git'
+          repository: 'alan-copeland-keysight/opentap'
           ref: '1f6bc14'
           path: 'tap'
           clean: 'false'
