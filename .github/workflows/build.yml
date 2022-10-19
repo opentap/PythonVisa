@@ -21,13 +21,17 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Get custom OpenTAP branch
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: plugin
+      - name: Checkout OpenTAP branch
         uses: actions/checkout@v3
         with:
           repository: 'alan-copeland-keysight/opentap'
           ref: '1f6bc14'
           path: 'tap'
-          clean: 'false'
+
       - name: Build OpenTAP branch
         run: |
              pushd tap
@@ -40,6 +44,6 @@ jobs:
       - name: Package plugin
         run: |
              pushd tap/bin/debug
-             ./tap package create ../../../package.xml
+             ./tap package create ../../../plugin/package.xml
              popd   
              ls -la 
