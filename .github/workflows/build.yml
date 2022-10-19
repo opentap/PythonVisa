@@ -39,11 +39,11 @@ jobs:
              popd
       - name: Install Python plugin
         run: |
-             pushd tap/bin/debug
+             pushd tap/bin/Debug
              ./tap package install Python --version -rc
       - name: Package plugin
         run: |
-             pushd tap/bin/debug
+             pushd tap/bin/Debug
              ./tap package create ../../../plugin/package.xml
              popd   
              ls -la 
