@@ -49,4 +49,4 @@ jobs:
           name: TapPackage
           retention-days: 14
           path: |
-            bin/Debug/PythonVisa*.TapPackage
+            tap/bin/Debug/PythonVisa*.TapPackage
