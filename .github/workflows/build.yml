@@ -1,0 +1,45 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-ubuntu:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04]
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Get custom OpenTAP branch
+        uses: actions/checkout@v3
+        with:
+          repository: 'https://github.com/alan-copeland-keysight/opentap.git'
+          ref: '1f6bc14'
+          path: 'tap'
+          clean: 'false'
+      - name: Build OpenTAP branch
+        run: |
+             pushd tap
+             dotnet build -c debug
+             popd
+      - name: Install Python plugin
+        run: |
+             pushd tap/bin/debug
+             ./tap package install Python --version -rc
+      - name: Package plugin
+        run: |
+             pushd tap/bin/debug
+             ./tap package create ../../../package.xml
+             popd   
+             ls -la 
