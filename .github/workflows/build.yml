@@ -44,7 +44,7 @@ jobs:
              popd   
              ls -la 
       - name: Upload binaries
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: TapPackage
           retention-days: 14
