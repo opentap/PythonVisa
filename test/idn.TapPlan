@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan type="OpenTap.TestPlan">
+  <Steps>
+    <TestStep type="OpenTap.Plugins.BasicSteps.SCPIRegexStep" Id="5cded4c4-6d1a-46a3-af18-922d3e3bc267">
+      <Instrument Source="OpenTap.InstrumentSettings">INSTR</Instrument>
+      <Action>Query</Action>
+      <Query>*IDN?</Query>
+      <AddToLog>true</AddToLog>
+      <RegularExpressionPattern>
+        <Value>(.*)</Value>
+        <IsEnabled>false</IsEnabled>
+      </RegularExpressionPattern>
+      <VerdictOnMatch>Pass</VerdictOnMatch>
+      <VerdictOnNoMatch>Fail</VerdictOnNoMatch>
+      <ResultRegularExpressionPattern>
+        <Value>(.*)</Value>
+        <IsEnabled>false</IsEnabled>
+      </ResultRegularExpressionPattern>
+      <ResultName>Regex Result</ResultName>
+      <Behavior>GroupsAsDimensions</Behavior>
+      <DimensionTitles></DimensionTitles>
+      <Name Metadata="Step Name">SCPI</Name>
+    </TestStep>
+  </Steps>
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="^9.20.0-alpha.1.3+f3eb05b6.932-makeVisaPluggable2" />
+  </Package.Dependencies>
+</TestPlan>
