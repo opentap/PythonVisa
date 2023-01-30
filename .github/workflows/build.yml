@@ -20,7 +20,7 @@ jobs:
       - name: Checkout OpenTAP branch
         uses: actions/checkout@v3
         with:
-          repository: 'alan-copeland-keysight/opentap'
+          repository: 'opentap/opentap'
           ref: '932-makeVisaPluggable2'
           path: 'tap'
           fetch-depth: 0
