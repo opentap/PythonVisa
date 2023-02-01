@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PyVisaSettings type="PythonVisa.PyVisa.PyVisaSettings">
-  <LoadFirst>false</LoadFirst>
-  <Backend>simulation_instrument.yaml@sim</Backend>
+  <LoadFirst>true</LoadFirst>
+  <Backend>C:/src/opentap/bin/Release/simulation_instrument.yaml@sim</Backend>
   <Package.Dependencies />
 </PyVisaSettings>
