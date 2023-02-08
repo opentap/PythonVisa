@@ -1,3 +1,4 @@
 pyvisa
 pyvisa-py
+pyvisa-sim
 debugpy
