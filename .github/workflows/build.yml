@@ -40,7 +40,7 @@ jobs:
         run: |
              ls -la
              pwd
-             ./bin/tap package create --project-directory ./ ./package.xml
+             ./bin/tap package create -v --project-directory ./ ./package.xml
              ls -la 
       - name: Upload binaries
         uses: actions/upload-artifact@v3
