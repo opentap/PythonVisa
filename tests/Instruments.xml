@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<InstrumentSettings type="OpenTap.InstrumentSettings">
+  <ScpiInstrument type="OpenTap.ScpiInstrument" Source="">
+    <VisaAddress>TCPIP0::localhost::20002::SOCKET</VisaAddress>
+    <IoTimeout>2000</IoTimeout>
+    <FinegrainedLock>false</FinegrainedLock>
+    <Lock>false</Lock>
+    <LockRetries>5</LockRetries>
+    <LockHoldoff>0.1</LockHoldoff>
+    <QueryErrorAfterCommand>false</QueryErrorAfterCommand>
+    <SendClearOnConnect>true</SendClearOnConnect>
+    <VerboseLoggingEnabled>true</VerboseLoggingEnabled>
+    <Name>INSTR</Name>
+  </ScpiInstrument>
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="^9.20.0-alpha.1.3+f3eb05b6.932-makeVisaPluggable2" />
+  </Package.Dependencies>
+</InstrumentSettings>
