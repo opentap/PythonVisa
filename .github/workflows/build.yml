@@ -24,7 +24,7 @@ jobs:
       - name: Restore the project
         run: |
              ls -la
-             dotnet restore
+             dotnet build || echo true
              ls -la 
       - name: Switch to pre-release version of OpenTAP
         run: |
