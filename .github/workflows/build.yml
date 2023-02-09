@@ -23,7 +23,7 @@ jobs:
           path: .
       - name: Switch to pre-release version of OpenTAP
         run: |
-             pushd bin
+             pushd ./bin
              ./tap package install OpenTAP --version 9.20.0-alpha.1.1@a203c260.pull-934-merge --os MacOS
              popd 
       - name: Build plugin
@@ -32,7 +32,7 @@ jobs:
              dotnet build -c Debug
       - name: Package plugin
         run: |
-             pushd bin
+             pushd ./bin
              ./tap package create --project-directory ../ ../package.xml
              popd   
              ls -la 
