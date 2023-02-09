@@ -44,6 +44,7 @@ jobs:
              ls -la 
              ./bin/tap package list -i -v
              ./bin/tap python install-requirements -v
+             ./bin/tap package list -i -v
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
