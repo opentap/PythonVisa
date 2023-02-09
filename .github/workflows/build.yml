@@ -38,7 +38,7 @@ jobs:
       - name: Install plugin and requirements
         run: |
              pushd ./bin
-             ./tap package install -v ../PythonVisa*.TapPackage
+             ./tap package install -v ../*.TapPackage
              ./tap python install-requirements -v
              popd
       - name: Upload binaries
@@ -47,4 +47,4 @@ jobs:
           name: TapPackage
           retention-days: 14
           path: |
-            ./PythonVisa*.TapPackage
+            ./*.TapPackage
