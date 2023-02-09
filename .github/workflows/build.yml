@@ -39,14 +39,13 @@ jobs:
       - name: Package plugin
         run: |
              ls -la
-             pushd ./bin
-             ./tap package create --project-directory ../ ../package.xml
+             pwd
+             ./bin/tap package create --project-directory ./ ./package.xml
              ls -la 
-             popd
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
           name: TapPackage
           retention-days: 14
           path: |
-            ./bin/PythonVisa*.TapPackage
+            ./PythonVisa*.TapPackage
