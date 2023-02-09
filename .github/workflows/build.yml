@@ -38,13 +38,14 @@ jobs:
              dotnet build -c Debug
       - name: Package plugin
         run: |
-             ls -la
-             pwd
-             ./bin/tap package create -v --install --project-directory ./ ./package.xml
-             ls -la 
-             ./bin/tap package list -i -v
-             ./bin/tap python install-requirements -v
-             ./bin/tap package list -i -v
+             ./bin/tap package create -v --project-directory ./ ./package.xml
+      - name: Install plugin
+        run: |
+             pushd ./bin
+             ./tap package list -i
+             ./tap package install -v ../PythonVisa*.TapPackage
+             ./tap package list -i
+             popd
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
