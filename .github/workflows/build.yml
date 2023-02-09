@@ -20,29 +20,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: PythonVisa
+          path: .
       - name: Restore the project
         run: |
-             pushd PythonVisa
+             pwd
              ls -la
              dotnet build -c Debug || echo true
              ls -la 
-             popd
       - name: Switch to pre-release version of OpenTAP
         run: |
-             pushd ./PythonVisa/bin
-             ./tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
-             popd 
+             TAP_PATH=$(pwd)/bin/tap ./bin/tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
       - name: Build plugin
         run: |
-             pushd PythonVisa
              ls -la
              dotnet build -c Debug
-             popd
       - name: Package plugin
         run: |
              ls -la
-             ./PythonVisa/bin/tap package create --project-directory ./PythonVisa ./PythonVisa/package.xml
+             TAP_PATH=$(pwd)/bin/tap ./bin/tap package create --project-directory . ./package.xml
              ls -la 
       - name: Upload binaries
         uses: actions/upload-artifact@v3
