@@ -16,5 +16,8 @@
         <File Path="Readme.md" >
             <ProjectFile/>
         </File>
+        <File Path="requirements.txt" >
+            <ProjectFile/>
+        </File>
     </Files>
 </Package>
