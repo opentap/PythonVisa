@@ -45,6 +45,8 @@ jobs:
              ./tap package list -i
              ./tap package install -v ../PythonVisa*.TapPackage
              ./tap package list -i
+             ./tap python install-requirements -v
+             ./tap package list -i
              popd
       - name: Upload binaries
         uses: actions/upload-artifact@v3
