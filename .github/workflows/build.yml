@@ -23,10 +23,7 @@ jobs:
           path: .
       - name: Restore the project
         run: |
-             pwd
-             ls -la
-             dotnet build -c Debug || echo true
-             ls -la 
+             dotnet build -c Release || echo true             
       - name: Switch to pre-release version of OpenTAP
         run: |
              pushd ./bin
@@ -34,19 +31,15 @@ jobs:
              popd 
       - name: Build plugin
         run: |
-             ls -la
-             dotnet build -c Debug
+             dotnet build -c Release
       - name: Package plugin
         run: |
              ./bin/tap package create -v --project-directory ./ ./package.xml
-      - name: Install plugin
+      - name: Install plugin and requirements
         run: |
              pushd ./bin
-             ./tap package list -i
              ./tap package install -v ../PythonVisa*.TapPackage
-             ./tap package list -i
              ./tap python install-requirements -v
-             ./tap package list -i
              popd
       - name: Upload binaries
         uses: actions/upload-artifact@v3
