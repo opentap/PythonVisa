@@ -29,7 +29,9 @@ jobs:
              ls -la 
       - name: Switch to pre-release version of OpenTAP
         run: |
-             TAP_PATH=$(pwd)/bin ./bin/tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
+             pushd ./bin
+             ./tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
+             popd 
       - name: Build plugin
         run: |
              ls -la
@@ -37,12 +39,14 @@ jobs:
       - name: Package plugin
         run: |
              ls -la
-             TAP_PATH=$(pwd)/bin ./bin/tap package create --project-directory . ./package.xml
+             pushd ./bin
+             ./tap package create --project-directory ../ ../package.xml
              ls -la 
+             popd
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
           name: TapPackage
           retention-days: 14
           path: |
-            PythonVisa*.TapPackage
+            ./bin/PythonVisa*.TapPackage
