@@ -12,7 +12,8 @@ public class Tests
     public void Setup()
     {
         Console.WriteLine("Current working directory is: " + System.IO.Directory.GetCurrentDirectory());
-        System.IO.Directory.CreateDirectory("../../../../Settings/Bench/Default");
+        
+        System.IO.Directory.CreateDirectory("../../../../bin/Settings/Bench/Default");
 
         System.IO.File.Copy("../../../idn.TapPlan", "../../../../bin/idn.TapPlan", true);
         System.IO.File.Copy("../../../PythonVisa.xml", "../../../../bin/Settings/PythonVisa.xml", true);
