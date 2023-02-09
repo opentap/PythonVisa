@@ -41,6 +41,9 @@ jobs:
              ./tap package install -v ../*.TapPackage
              ./tap python install-requirements -v
              popd
+      - name: Run Tests
+        run: |
+             dotnet test
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
