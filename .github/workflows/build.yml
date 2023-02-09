@@ -17,30 +17,10 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-      - name: Checkout OpenTAP branch
-        uses: actions/checkout@v3
-        with:
-          repository: 'alan-copeland-keysight/opentap'
-          ref: 'feature/make-visa-pluggable'
-          path: 'tap'
-          fetch-depth: 0
-      - name: Build OpenTAP branch
-        run: |
-             pushd tap
-             dotnet build -c debug
-             popd
-      - name: Install Python plugin
-        run: |
-             pushd tap/bin/Debug
-             ./tap package install Python --version -rc
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          path: tap/bin/Debug/Packages/PythonVisa
       - name: Package plugin
         run: |
-             pushd tap/bin/Debug
-             ./tap package create --project-directory Packages/PythonVisa Packages/PythonVisa/package.xml
+             pushd bin
+             ./tap package create --project-directory ../ package.xml
              popd   
              ls -la 
       - name: Upload binaries
@@ -49,4 +29,4 @@ jobs:
           name: TapPackage
           retention-days: 14
           path: |
-            tap/bin/Debug/PythonVisa*.TapPackage
+            bin/PythonVisa*.TapPackage

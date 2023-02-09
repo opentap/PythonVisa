@@ -22,7 +22,7 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
     @staticmethod
     def viOpenDefaultRM(sesn):  
         PyVisa._rm = pyvisa.ResourceManager(OpenTap.ComponentSettings.GetCurrent(PyVisaSettings).Backend)
-        print(PyVisa._rm)
+        print("Opening resource manager: %s" % PyVisa._rm)
         PyVisa._rm.visalib.issue_warning_on = {}
         return 0, PyVisa._rm.session  
         
@@ -227,7 +227,13 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
     @method(Int32,[Int32])
     @staticmethod
     def viClear(vi):
-        StatusCode = PyVisa._rm.visalib.clear(vi)
+        try:
+            StatusCode = PyVisa._rm.visalib.clear(vi)
+        except NotImplementedError:
+            if OpenTap.ComponentSettings.GetCurrent(PyVisaSettings).Backend.endswith("@sim"):
+                return pyvisa.constants.StatusCode.success
+            else:
+                return pyvisa.constants.StatusCode.error_nimpl_oper
         return StatusCode
         
     @method(Int32,[Int32, Int32, Int32, String, StringBuilder])
@@ -242,7 +248,8 @@ class PyVisa(OpenTap.ITapPlugin, OpenTap.IVisa):
         StatusCode = PyVisa._rm.visalib.unlock(vi)
         return StatusCode
 
-@attribute(OpenTap.Display("PythonVisa Settings", "Customize the behavior of PythonVisa"))
+@attribute(OpenTap.Display("PythonVisa", "Customize the behavior of PythonVisa"))
+@attribute(BrowsableAttribute, False)
 class PyVisaSettings(OpenTap.ComponentSettings):
     def __init__(self):
         super().__init__()
