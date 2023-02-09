@@ -32,6 +32,9 @@ jobs:
              pushd ./bin
              ./tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
              popd 
+      - name: Install Python requirements
+        run: |
+             ./bin/tap python install-requirements -v
       - name: Build plugin
         run: |
              ls -la
