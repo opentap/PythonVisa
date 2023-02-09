@@ -12,8 +12,7 @@
         <PackageReference Include="OpenTAP" Version="9.19.4" />
         <!-- <AdditionalOpenTapPackage Include="OpenTAP" Version="9.20.0-alpha.1.1+a203c260.pull-934-merge" /> -->
         <OpenTapPackageReference Include="Python" Version="3.0" />
-        <AdditionalOpenTapPackage Include="PythonExamples" Version="3.0" />
-        
+
         <!-- Uncomment one of these lines to get a test plan editor installed when you build. -->
         <!-- <OpenTapPackageReference Include="Editor"/> -->
         <!-- <OpenTapPackageReference Include="EditorX"/> -->
