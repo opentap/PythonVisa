@@ -43,7 +43,7 @@ jobs:
              ./bin/tap package create -v --install --project-directory ./ ./package.xml
              ls -la 
              ./bin/tap package list -i -v
-             ./bin/tap package install-requirements -v
+             ./bin/tap python install-requirements -v
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
