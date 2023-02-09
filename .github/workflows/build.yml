@@ -42,7 +42,7 @@ jobs:
       - name: Package plugin
         run: |
              ls -la
-             ./PythonVisa/bin/tap package create --project-directory ./PythonVisa package.xml
+             ./PythonVisa/bin/tap package create --project-directory ./PythonVisa ./PythonVisa/package.xml
              ls -la 
       - name: Upload binaries
         uses: actions/upload-artifact@v3
