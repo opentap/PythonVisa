@@ -37,9 +37,7 @@ jobs:
              dotnet build -c Debug
       - name: Package plugin
         run: |
-             pushd ./bin
-             ./tap package create --project-directory ../ ../package.xml
-             popd   
+             ./bin/tap package create --project-directory . package.xml
              ls -la 
       - name: Upload binaries
         uses: actions/upload-artifact@v3
@@ -47,4 +45,4 @@ jobs:
           name: TapPackage
           retention-days: 14
           path: |
-            bin/PythonVisa*.TapPackage
+            PythonVisa*.TapPackage
