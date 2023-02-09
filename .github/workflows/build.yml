@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: .
+          path: PythonVisa
       - name: Restore the project
         run: |
              ls -la
@@ -37,6 +37,7 @@ jobs:
              dotnet build -c Debug
       - name: Package plugin
         run: |
+             ls -la
              ./bin/tap package create --project-directory . package.xml
              ls -la 
       - name: Upload binaries
