@@ -29,7 +29,7 @@ jobs:
              ls -la 
       - name: Switch to pre-release version of OpenTAP
         run: |
-             TAP_PATH=$(pwd)/bin/tap ./bin/tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
+             TAP_PATH=$(pwd)/bin ./bin/tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
       - name: Build plugin
         run: |
              ls -la
@@ -37,7 +37,7 @@ jobs:
       - name: Package plugin
         run: |
              ls -la
-             TAP_PATH=$(pwd)/bin/tap ./bin/tap package create --project-directory . ./package.xml
+             TAP_PATH=$(pwd)/bin ./bin/tap package create --project-directory . ./package.xml
              ls -la 
       - name: Upload binaries
         uses: actions/upload-artifact@v3
