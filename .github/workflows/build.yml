@@ -23,6 +23,7 @@ jobs:
           path: .
       - name: Switch to pre-release version of OpenTAP
         run: |
+             ls -la
              pushd ./bin
              ./tap package install OpenTAP --version 9.20.0-alpha.1.1@a203c260.pull-934-merge --os MacOS
              popd 
