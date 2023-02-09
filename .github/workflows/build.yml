@@ -42,6 +42,7 @@ jobs:
              pwd
              ./bin/tap package create -v --install --project-directory ./ ./package.xml
              ls -la 
+             ./bin/tap package list -i -v
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
