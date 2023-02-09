@@ -17,7 +17,7 @@
             <ProjectFile/>
         </File>
         <File Path="requirements.txt" >
-            <ProjectFile/>
+            <PythonRequirements />
         </File>
     </Files>
 </Package>
