@@ -41,16 +41,12 @@ jobs:
              ./tap package install -v ../*.TapPackage
              ./tap python install-requirements -v
              popd
-      - name: Run Tests
+      - name: Run Simulated *IDN? Test
         run: |
-             BUILD_PATH=$PWD/bin
-             mkdir -p ./tests/bin/Debug/net6.0
-             pushd ./tests/bin/Debug/net6.0
-             ln -s $BUILD_PATH/Packages .
-             ln -s $BUILD_PATH/Dependencies .
+             cp -R ./test_files/ ./bin
+             pushd ./bin
+             ./tap run --non-interactive -v idn.TapPlan
              popd
-             dotnet test || echo true
-             cat ./tests/bin/Debug/net6.0/SessionLogs/*.txt
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
