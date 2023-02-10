@@ -45,6 +45,7 @@ jobs:
         run: |
              cp -R ./test_files/ ./bin
              pushd ./bin
+             ls -la
              ./tap run --non-interactive -v idn.TapPlan
              popd
       - name: Upload binaries
