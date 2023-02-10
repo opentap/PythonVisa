@@ -44,6 +44,7 @@ jobs:
       - name: Run Tests
         run: |
              BUILD_PATH=$PWD/bin
+             mkdir -p ./tests/bin/Debug/net6.0
              pushd ./tests/bin/Debug/net6.0
              ln -s $BUILD_PATH/Packages .
              ln -s $BUILD_PATH/Dependencies .
