@@ -18,6 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PythonVisa.Api\PythonVisa.Api.csproj" />
+    <Reference Include="OpenTap.dll">
+      <HintPath>../bin/OpenTap.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTap.Plugins.BasicSteps.dll">
       <HintPath>../bin/Packages/OpenTAP/OpenTap.Plugins.BasicSteps.dll</HintPath>
     </Reference>
