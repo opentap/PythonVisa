@@ -43,6 +43,11 @@ jobs:
              popd
       - name: Run Tests
         run: |
+             BUILD_PATH=$PWD/bin
+             pushd ./tests/bin/Debug/net6.0
+             ln -s $BUILD_PATH/Packages .
+             ln -s $BUILD_PATH/Dependencies .
+             popd
              dotnet test
       - name: Upload binaries
         uses: actions/upload-artifact@v3

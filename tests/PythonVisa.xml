@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PyVisaSettings type="PythonVisa.PyVisa.PyVisaSettings">
   <LoadFirst>true</LoadFirst>
-  <Backend>/home/runner/work/PythonVisa/PythonVisa/bin/simulation_instrument.yaml@sim</Backend>
+  <Backend>home/runner/work/PythonVisa/PythonVisa/tests/bin/Debug/net6.0/simulation_instrument.yaml@sim</Backend>
   <Package.Dependencies />
 </PyVisaSettings>
