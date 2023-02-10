@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Package Name="PythonVisa" OS="Windows,Linux,MacOS" Date="10/03/2022 21:50:17" Version="$(GitVersion)" Architecture="AnyCPU" xmlns="http://opentap.io/schemas/package">
-  <Dependencies>
-    <PackageDependency Package="OpenTAP" Version="^9.19.1-alpha.3.1+1eb256ba.feature-make-visa-pluggable" />
-    <PackageDependency Package="Python" Version="^3.0.0-rc+b49e92cd" />
-  </Dependencies>
-  <Owner>Keysight Technologies, Inc.</Owner>
-  <SourceUrl>https://github.com/alan-copeland-keysight/PythonVisa</SourceUrl>
-  <Files>
-    <File Path="Packages/PythonVisa/PyVisa.py">
-    </File>
-    <File Path="Packages/PythonVisa/__init__.py">
-    </File>
-    <File Path="Packages/PythonVisa/LICENSE.txt">
-    </File>
-    <File Path="Packages/PythonVisa/requirements.txt">
-      <PythonRequirements></PythonRequirements>
-    </File>
-  </Files>
-  <License>Apache-2.0</License>
-  <Description>This package enables a VISA connection using the pyvisa/pyvisa-py library as its underlying I/O mechanism.</Description>
+<?xml version="1.0" encoding="UTF-8"?>
+<Package Name="PythonVisa" xmlns="http://keysight.com/Schemas/tap" Version="$(GitVersion)" OS="Windows,Linux,MacOS">
+    <Description>
+        PythonVisa
+        <Prerequisites> Python (>3.7) </Prerequisites>
+    </Description>
+    
+    <Files>
+        <File Path="PythonVisa/*.py" >
+            <ProjectFile/>
+        </File>
+                    
+        <File Path="Packages/PythonVisa/PythonVisa.Api.dll" SourcePath="bin/PythonVisa.Api.dll" >
+            <ProjectFile/>
+        </File>
+        <File Path="README.md" >
+            <ProjectFile/>
+        </File>
+        <File Path="requirements.txt" >
+            <PythonRequirements />
+        </File>
+    </Files>
 </Package>
