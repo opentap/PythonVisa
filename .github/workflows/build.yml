@@ -43,7 +43,7 @@ jobs:
              popd
       - name: Run Simulated *IDN? Test
         run: |
-             cp -R ./test_files/ ./bin
+             cp -R ./test_files/* ./bin/
              pushd ./bin
              ls -la
              ./tap run --non-interactive -v idn.TapPlan
