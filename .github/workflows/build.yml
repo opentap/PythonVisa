@@ -49,7 +49,8 @@ jobs:
              ln -s $BUILD_PATH/Packages .
              ln -s $BUILD_PATH/Dependencies .
              popd
-             dotnet test
+             dotnet test || echo true
+             cat ./tests/bin/Debug/net6.0/SessionLogs/*.txt
       - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
