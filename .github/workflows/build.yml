@@ -24,11 +24,11 @@ jobs:
       - name: Restore the project
         run: |
              dotnet build -c Release || echo true             
-      - name: Switch to pre-release version of OpenTAP
-        run: |
-             pushd ./bin
-             ./tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
-             popd 
+      # - name: Switch to pre-release version of OpenTAP
+      #   run: |
+      #        pushd ./bin
+      #        ./tap package install OpenTAP --version 9.20.0-alpha.1.1+a203c260.pull-934-merge --os MacOS
+      #        popd 
       - name: Build plugin
         run: |
              dotnet build -c Release

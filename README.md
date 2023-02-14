@@ -10,7 +10,7 @@ Install:
 ## Dependencies
 
 These are installed automatically during the build process:
-- [OpenTAP 9.20.0-alpha.1.1+a203c260.pull-934-merge or later _(needed for dynamic VISA loading)_](https://packages.opentap.io/#name=%2FPackages%2FOpenTAP&version=9.20.0-alpha.1.1%2Ba203c260.pull-934-merge)
+- [OpenTAP 9.20.0-beta.35+cf62fe8b or later _(needed for dynamic VISA loading)_](https://packages.opentap.io/4.0/Objects/Packages/OpenTAP?version=9.20.0-beta.35%2Bcf62fe8b)
 - [OpenTAP Python plugin 3.0+](https://packages.opentap.io/#name=%2FPackages%2FPython)
 - [PyVISA](https://github.com/pyvisa/pyvisa), [PyVISA-py](https://github.com/pyvisa/pyvisa-py), [PyVISA-sim](https://github.com/pyvisa/pyvisa-sim)
 
