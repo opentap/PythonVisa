@@ -20,7 +20,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: .
+          fetch-depth: 0
+      - name: Fix tags
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: git fetch -f origin ${{ github.ref }}:${{ github.ref }} 
       - name: Restore the project
         run: |
              dotnet build -c Release || echo true             
