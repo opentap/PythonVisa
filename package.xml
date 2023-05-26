@@ -6,7 +6,7 @@
         <Prerequisites> Python (>3.7) </Prerequisites>
         <Links>
             <Link Name="Source Code" Description="Go to the source code repository." Url="https://github.com/opentap/PythonVisa" />
-            <Link Name="Documentation" Description="Go to the documentation." Url="https://github.com/opentap/PythonVisa#readme" /></Links>
+            <Link Name="Documentation" Description="Go to the documentation." Url="https://github.com/opentap/PythonVisa#readme" />
         </Links>
     </Description>
     <Owner>Keysight Technologies</Owner>
