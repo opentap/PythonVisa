@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package Name="PythonVisa" xmlns="http://keysight.com/Schemas/tap" Version="$(GitVersion)" OS="Windows,Linux,MacOS">
-    <Description>
-        PythonVisa
+    <Description>Use PyVISA and PyVISA-py to supply VISA instrument communication to Keysight OpenTAP when a vendor implementation is not available.
+        <Status>Released</Status>
+        <Organisation>Keysight Technologies</Organisation>
         <Prerequisites> Python (>3.7) </Prerequisites>
+        <Links>
+            <Link Name="Source Code" Description="Go to the source code repository." Url="https://github.com/opentap/PythonVisa" />
+            <Link Name="Documentation" Description="Go to the documentation." Url="https://github.com/opentap/PythonVisa#readme" /></Links>
+        </Links>
     </Description>
-    
+    <Owner>Keysight Technologies</Owner>
+    <SourceUrl>https://github.com/opentap/PythonVisa</SourceUrl>
     <Files>
         <File Path="PythonVisa/*.py" >
             <ProjectFile/>
