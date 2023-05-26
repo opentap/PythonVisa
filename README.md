@@ -1,18 +1,14 @@
 ## PythonVisa
 
-Use PyVISA and PyVISA-py to supply VISA instrument communication to [Keysight OpenTAP](https://opentap.io/) when a vendor implemnentation is not available.
+Use PyVISA and PyVISA-py to supply VISA instrument communication to [Keysight OpenTAP](https://opentap.io/) when a vendor implementation is not available.
 
-## Pre-requisites
+## Dependencies / Pre-requisites
 
-Install: 
-- [.NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-
-## Dependencies
-
-These are installed automatically during the build process:
-- [OpenTAP 9.20.0-alpha.1.1+a203c260.pull-934-merge or later _(needed for dynamic VISA loading)_](https://packages.opentap.io/#name=%2FPackages%2FOpenTAP&version=9.20.0-alpha.1.1%2Ba203c260.pull-934-merge)
-- [OpenTAP Python plugin 3.0+](https://packages.opentap.io/#name=%2FPackages%2FPython)
-- [PyVISA](https://github.com/pyvisa/pyvisa), [PyVISA-py](https://github.com/pyvisa/pyvisa-py), [PyVISA-sim](https://github.com/pyvisa/pyvisa-sim)
+- [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [Python 3.7+](https://www.python.org/downloads/)
+- [OpenTAP 9.20.0+ _(needed for dynamic VISA loading)_](https://packages.opentap.io/#name=%2FPackages%2FOpenTAP&version=9.20.0)
+- [OpenTAP Python plugin 3.0.0+](https://packages.opentap.io/#name=%2FPackages%2FPython)
+- [PyVISA](https://github.com/pyvisa/pyvisa), [PyVISA-py](https://github.com/pyvisa/pyvisa-py), [PyVISA-sim (optional)](https://github.com/pyvisa/pyvisa-sim)
 
 ## Build
 
